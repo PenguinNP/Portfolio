@@ -1,19 +1,20 @@
 import { projects } from '@/data'
 import React from 'react'
 import { PinContainer } from './ui/3d-pin'
+import { FaLocationArrow } from 'react-icons/fa'
 
 const RecentProjects = () => {
   return (
-    <div className='py-20'>
+    <div className='py-20' id='projects'>
       <h1 className='heading'>
         A small selection of {' '}
         <span className='text-purple'>recent projects</span>
       </h1>
-      <div className='flex flex-wrap p-4 gap-16 justify-center items-center'> 
+      <div className='flex flex-wrap p-4 gap-x-24 gap-y-8 justify-center items-center'> 
         {projects.map(({id,title,img,iconLists,link,des})=>(
-          <div key={id} className='lg:min-h-[32.5rem] h-[25rem] flex justify-center items-center sm:w-96 w-[80vw]'>
-            <PinContainer title={title} href={link}>
-              <div className='relative flex items-center justify-center sm:w-96 w-[80vw] overhidden h-[20vh] lg:h-[30vh] mb-10'>
+          <div key={id} className='lg:min-h-[32.5rem] h-[32rem] sm:h-[41rem] flex justify-center items-center sm:w-96 w-[80vw]'>
+            <PinContainer title={link} href={link}>
+              <div className='relative flex  items-center justify-center sm:w-96 w-[80vw] overhidden h-[20vh] lg:h-[30vh] mb-10'>
                 <div className='relative w-full  h-full overflow-hidden lg:rounded-3xl bg-[#13162d]'>
                   <img src='/bg.png' />
                 </div>
@@ -25,8 +26,20 @@ const RecentProjects = () => {
               <p className='lg:text-xl lg:font-normal font-light text-sm line-clamp-2'>
                 {des}
               </p>
-              <div className=''>
-
+              <div className='flex items-center justify-between mt-7 mb-3'>
+                  <div className='flex items-center'>
+                    {iconLists.map((icon,index)=>(
+                      <div key={icon} className='border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 flex justify-center items-center w-8 h-8' 
+                      style={{ transform :`transtaleX(-${5*index*2}px)`}}
+                      >
+                        <img src={icon} className='p-2'/>
+                      </div>
+                    ))}
+                  </div>
+                  <div className='flex justify-center items-center'>
+                    <p className='flex lg:text-xl md:text-xs text-sm text-purple'>Check Live Site</p>
+                    <FaLocationArrow className='ms-3' color='#CBACF9' />
+                  </div>
               </div>
             </PinContainer>
           </div>
